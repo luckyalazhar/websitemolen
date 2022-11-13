@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+html,
+body {
+  font-family: "Roboto";
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin: 0;
+  top: 0;
+  left: 0;
+  background-color: #141824;
+  color: white;
+}
+
+.navbar {
+  padding: 0;
+}
+.navbar .navbar-nav .nav-link {
+  padding: 1.5em;
+}
+
+.navbar .navbar-brand a {
+  padding: 1rem 0;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar .navbar-brand {
+  font-family: "Pacifico";
+  font-size: 2rem;
+}
+.navbar .navbar-brand:hover {
+  font-family: "Pacifico";
+  font-size: 2rem;
+  color: #6478b7;
+  transition: all .5s;
+}
+
+.navbar .navbar-nav .nav-item{
+  position: relative;
+}
+
+.navbar .navbar-nav .nav-item::after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  content: '';
+  background-color: #6478b7;
+  width: 0%;
+  height: 4px;
+  transition: all .5s;
+}
+.navbar .navbar-nav .nav-item:hover::after{
+  width: 100%;
+}
+.navbar .navbar-nav .nav-item .active{
+  text-decoration: none;
+}
+.navbar .navbar-nav .nav-item .active:hover{
+  color: #6478b7;
+  transition: ease-in .5s;
+}
