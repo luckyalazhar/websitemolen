@@ -2,7 +2,8 @@
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\HeroController;
+
 
 
 
@@ -17,15 +18,14 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/', [StudentController::class, 'student'])->name('student');
-Route::get('/input', [StudentController::class, 'input'])->name('input');
-Route::post('/input', [StudentController::class, 'insert'])->name('insert');
+Route::get('/', [HeroController::class, 'index'])->name('hero');
 
-Route::get('/show/{id}', [StudentController::class, 'show'])->name('show');
-Route::post('/edit/{id}', [StudentController::class, 'edit'])->name('edit');
+Route::get('/insert', [HeroController::class, 'insert'])->name('insert');
+Route::post('/insertdata', [HeroController::class, 'insertdata'])->name('insertdata');
 
-Route::get('/delete/{id}', [StudentController::class, 'delete'])->name('delete');
+Route::get('/edit/{id}', [HeroController::class, 'edit'])->name('edit');
+Route::post('/update/{id}', [HeroController::class, 'update'])->name('update');
 
-// Export PDF
-Route::get('/exportpdf', [StudentController::class, 'exportpdf'])->name('exportpdf');
+Route::get('/delete/{id}', [HeroController::class, 'delete'])->name('delete');
+
 
