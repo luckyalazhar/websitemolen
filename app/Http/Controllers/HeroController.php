@@ -9,17 +9,19 @@ class HeroController extends Controller
 {
     public function index(Request $request)
     {
+    
         if ($request->has('search')) {
             $data = Hero::where('name', 'LIKE', '%' . $request->search.'%')->paginate(5);
         } else {
             $data = Hero::paginate(5);
         }
 
-        return view('index', compact('data'));
+        return view('index', compact('data'),[
+        "title" => "Data Hero" ]);
     }
     public function insert()
     {
-        return view('insert');
+        return view('insert',["title" => "Insert"]);
     }
     public function insertdata(Request $request)
     {
@@ -29,23 +31,26 @@ class HeroController extends Controller
             $data->image = $request->file('image')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->route('hero')->with('success', 'Data Successfully Added');
+        toastr('Data Successfully Added');
+        return redirect()->route('hero');
     }
     public function edit($id)
     {
         $data = Hero::find($id);
-        return view('edit', compact('data'));
+        return view('edit', compact('data'),["title" => "Edit"]);
     }
     public function update(Request $request, $id)
     {
         $data = Hero::find($id);
         $data->update($request->all());
-        return redirect()->route('hero')->with('success', 'Data Successfully Updated');
+        toastr('Data Successfully Updated');
+        return redirect()->route('hero');
     }
     public function delete($id)
     {
         $data = Hero::find($id);
         $data->delete();
-        return redirect()->route('hero')->with('success', 'Data Successfully Deleted');
+        toastr('Data Successfully Deleted');
+        return redirect()->route('hero');
     }
 }

@@ -3,6 +3,8 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HeroController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 
 
 
@@ -28,4 +30,10 @@ Route::post('/update/{id}', [HeroController::class, 'update'])->name('update');
 
 Route::get('/delete/{id}', [HeroController::class, 'delete'])->name('delete');
 
+Route::get('/admin', [AdminController::class, 'dashboard'])->name('dashboard');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/register', [AuthController::class, 'store'])->name('store');
 
